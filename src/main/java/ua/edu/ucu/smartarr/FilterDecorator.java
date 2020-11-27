@@ -14,8 +14,10 @@ public class FilterDecorator extends SmartArrayDecorator {
         this.myPredicate = myPredicate;
         decoratedArray = filter();
     }
-    public Object[] filter(){
-        Object[] newArr = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+
+    public Object[] filter() {
+        Object[] newArr = Arrays.copyOf(smartArray.toArray(),
+                smartArray.size());
         ArrayList<Object> res = new ArrayList<>();
         for (Object o : newArr) {
             if (myPredicate.test(o)) {
@@ -24,7 +26,6 @@ public class FilterDecorator extends SmartArrayDecorator {
         }
         return res.toArray();
     }
-
 
 
     @Override

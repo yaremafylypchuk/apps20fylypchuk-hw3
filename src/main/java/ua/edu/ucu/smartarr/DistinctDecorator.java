@@ -10,8 +10,10 @@ public class DistinctDecorator extends SmartArrayDecorator {
         super(smartArray);
         decoratedArray = removeDublicates();
     }
-    private Object[] removeDublicates(){
-        Object[] newArr = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+
+    private Object[] removeDublicates() {
+        Object[] newArr = Arrays.copyOf(smartArray.toArray(),
+                smartArray.size());
         ArrayList<Object> res = new ArrayList<>();
         for (Object o : newArr) {
             for (int j = 1; j < newArr.length; j++) {

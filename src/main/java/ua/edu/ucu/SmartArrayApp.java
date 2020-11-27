@@ -1,16 +1,22 @@
 package ua.edu.ucu;
 
 import java.util.Arrays;
+
 import ua.edu.ucu.functions.MyComparator;
 import ua.edu.ucu.functions.MyFunction;
 import ua.edu.ucu.functions.MyPredicate;
-import ua.edu.ucu.smartarr.*;
+import ua.edu.ucu.smartarr.BaseArray;
+import ua.edu.ucu.smartarr.DistinctDecorator;
+import ua.edu.ucu.smartarr.MapDecorator;
+import ua.edu.ucu.smartarr.FilterDecorator;
+import ua.edu.ucu.smartarr.SmartArray;
+import ua.edu.ucu.smartarr.SortDecorator;
 
 public class SmartArrayApp {
 
     public static Integer[]
-            filterPositiveIntegersSortAndMultiplyBy2(Integer[] integers) {
-                
+    filterPositiveIntegersSortAndMultiplyBy2(Integer[] integers) {
+
         MyPredicate pr = new MyPredicate() {
             @Override
             public boolean test(Object t) {
@@ -20,8 +26,8 @@ public class SmartArrayApp {
 
         MyComparator cmp = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Integer) o1) - ((Integer) o2);
+            public int compare(Object obj, Object secObjc) {
+                return ((Integer) obj) - ((Integer) secObjc);
             }
         };
 
@@ -50,20 +56,22 @@ public class SmartArrayApp {
     }
 
     public static String[]
-            findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
+    findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
         SmartArray studentSmartArray = new BaseArray(students);
+        int WANTEDYEAR = 2;
+        int GDPGOAL = 4;
         MyPredicate pr = new MyPredicate() {
             @Override
             public boolean test(Object t) {
-                return ((Student) t).getYear() == 2
-                        && ((Student) t).getGPA() >= 4;
+                return ((Student) t).getYear() == WANTEDYEAR
+                        && ((Student) t).getGPA() >= GDPGOAL;
             }
         };
 
         MyComparator cmp = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Student) o1).getSurname().compareTo(((Student) o2).getSurname());
+            public int compare(Object obj, Object secObj) {
+                return ((Student) obj).getSurname().compareTo(((Student) secObj).getSurname());
             }
         };
 

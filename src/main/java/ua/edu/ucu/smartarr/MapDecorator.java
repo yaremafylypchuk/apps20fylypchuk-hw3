@@ -2,12 +2,12 @@ package ua.edu.ucu.smartarr;
 
 import ua.edu.ucu.functions.MyFunction;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 // Map every element to another object using MyFunction
-public class MapDecorator extends SmartArrayDecorator{
+public class MapDecorator extends SmartArrayDecorator {
     private final MyFunction function;
 
     public MapDecorator(SmartArray smartArray, MyFunction function) {
@@ -16,10 +16,12 @@ public class MapDecorator extends SmartArrayDecorator{
         decoratedArray = action();
 
     }
-    public Object[] action(){
-        Object[] newArr = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+
+    public Object[] action() {
+        Object[] newArr = Arrays.copyOf(smartArray.toArray(),
+                smartArray.size());
         ArrayList<Object> res = new ArrayList<>();
-        for (Object o : newArr){
+        for (Object o : newArr) {
             res.add(this.function.apply(o));
         }
         return res.toArray();

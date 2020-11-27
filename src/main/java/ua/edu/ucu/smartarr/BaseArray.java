@@ -1,12 +1,13 @@
 package ua.edu.ucu.smartarr;
 
-import java.lang.reflect.Array;
+
 import java.util.Arrays;
 
 // Base array for decorators
-public class BaseArray implements SmartArray{
+public class BaseArray implements SmartArray {
     private final Object[] array;
-    public BaseArray(Object[] input){
+
+    public BaseArray(Object[] input) {
         this.array = Arrays.copyOf(input, input.length);
     }
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 // Sorts elements using MyComparator to compare them
-public class SortDecorator extends SmartArrayDecorator{
+public class SortDecorator extends SmartArrayDecorator {
     private final MyComparator myComparator;
 
     public SortDecorator(SmartArray smartArray, MyComparator myComparator) {
@@ -14,9 +14,11 @@ public class SortDecorator extends SmartArrayDecorator{
         this.myComparator = myComparator;
         decoratedArray = compare();
     }
-    public Object[] compare(){
-        Object [] newArr = Arrays.copyOf(smartArray.toArray(), smartArray.size());
-        Arrays.sort(newArr,myComparator);
+
+    public Object[] compare() {
+        Object[] newArr = Arrays.copyOf(smartArray.toArray(),
+                smartArray.size());
+        Arrays.sort(newArr, myComparator);
         return newArr;
     }
 
