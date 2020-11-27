@@ -62,7 +62,8 @@ public class SmartArrayApp {
 
         final int WANTEDYEAR = 2;
         final int GDPGOAL = 4;
-        studentSmartArray = new FilterDecorator(studentSmartArray, new MyPredicate() {
+        studentSmartArray = new FilterDecorator(studentSmartArray,
+                new MyPredicate() {
             @Override
             public boolean test(Object t) {
                 return ((Student) t).getYear() == WANTEDYEAR
@@ -70,7 +71,8 @@ public class SmartArrayApp {
             }
         });
 
-        studentSmartArray = new SortDecorator(studentSmartArray, new MyComparator() {
+        studentSmartArray = new SortDecorator(studentSmartArray,
+                new MyComparator() {
             @Override
             public int compare(Object obj, Object secObj) {
                 return ((Student) obj).getSurname().compareTo(
@@ -78,7 +80,8 @@ public class SmartArrayApp {
             }
         });
 
-        studentSmartArray = new MapDecorator(studentSmartArray, new MyFunction() {
+        studentSmartArray = new MapDecorator(studentSmartArray,
+                new MyFunction() {
             @Override
             public Object apply(Object t) {
                 return ((Student) t).getSurname()
