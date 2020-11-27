@@ -23,7 +23,17 @@ public class SortDecorator extends SmartArrayDecorator {
     }
 
     @Override
+    public Object[] toArray() {
+        return decoratedArray;
+    }
+
+    @Override
     public String operationDescription() {
         return "Sorting";
+    }
+
+    @Override
+    public int size() {
+        return decoratedArray.length;
     }
 }

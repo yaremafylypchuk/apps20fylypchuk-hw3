@@ -20,15 +20,25 @@ public class MapDecorator extends SmartArrayDecorator {
     public Object[] action() {
         Object[] newArr = Arrays.copyOf(smartArray.toArray(),
                 smartArray.size());
-        ArrayList<Object> res = new ArrayList<>();
+        ArrayList<Object> temp = new ArrayList<>();
         for (Object o : newArr) {
-            res.add(this.function.apply(o));
+            temp.add(this.function.apply(o));
         }
-        return res.toArray();
+        return temp.toArray();
+    }
+
+    @Override
+    public Object[] toArray() {
+        return decoratedArray;
     }
 
     @Override
     public String operationDescription() {
         return "Applying function";
+    }
+
+    @Override
+    public int size() {
+        return decoratedArray.length;
     }
 }

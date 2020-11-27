@@ -18,18 +18,28 @@ public class FilterDecorator extends SmartArrayDecorator {
     public Object[] filter() {
         Object[] newArr = Arrays.copyOf(smartArray.toArray(),
                 smartArray.size());
-        ArrayList<Object> res = new ArrayList<>();
+        ArrayList<Object> temp = new ArrayList<>();
         for (Object o : newArr) {
             if (myPredicate.test(o)) {
-                res.add(o);
+                temp.add(o);
             }
         }
-        return res.toArray();
+        return temp.toArray();
     }
 
 
     @Override
+    public Object[] toArray() {
+        return decoratedArray;
+    }
+
+    @Override
     public String operationDescription() {
         return "Filter decorator. Filters array by the given predicate.";
+    }
+
+    @Override
+    public int size() {
+        return decoratedArray.length;
     }
 }

@@ -59,35 +59,34 @@ public class SmartArrayApp {
     findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(
             Student[] students) {
         SmartArray studentSmartArray = new BaseArray(students);
+
         final int WANTEDYEAR = 2;
         final int GDPGOAL = 4;
-        MyPredicate pr = new MyPredicate() {
+        studentSmartArray = new FilterDecorator(studentSmartArray, new MyPredicate() {
             @Override
             public boolean test(Object t) {
                 return ((Student) t).getYear() == WANTEDYEAR
                         && ((Student) t).getGPA() >= GDPGOAL;
             }
-        };
+        });
 
-        MyComparator cmp = new MyComparator() {
+        studentSmartArray = new SortDecorator(studentSmartArray, new MyComparator() {
             @Override
             public int compare(Object obj, Object secObj) {
                 return ((Student) obj).getSurname().compareTo(
                         ((Student) secObj).getSurname());
             }
-        };
+        });
 
-        MyFunction func = new MyFunction() {
+        studentSmartArray = new MapDecorator(studentSmartArray, new MyFunction() {
             @Override
             public Object apply(Object t) {
                 return ((Student) t).getSurname()
                         + " " + ((Student) t).getName();
             }
-        };
-        studentSmartArray = new FilterDecorator(studentSmartArray, pr);
-        studentSmartArray = new SortDecorator(studentSmartArray, cmp);
-        studentSmartArray = new MapDecorator(studentSmartArray, func);
+        });
         studentSmartArray = new DistinctDecorator(studentSmartArray);
+
 
         // Hint: to convert Object[] to String[] - use the following code
         Object[] result = studentSmartArray.toArray();
