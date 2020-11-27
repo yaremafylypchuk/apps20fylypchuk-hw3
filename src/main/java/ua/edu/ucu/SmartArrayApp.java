@@ -56,10 +56,11 @@ public class SmartArrayApp {
     }
 
     public static String[]
-    findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
+    findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname
+            (Student[] students) {
         SmartArray studentSmartArray = new BaseArray(students);
-        int WANTEDYEAR = 2;
-        int GDPGOAL = 4;
+        final int WANTEDYEAR = 2;
+        final int GDPGOAL = 4;
         MyPredicate pr = new MyPredicate() {
             @Override
             public boolean test(Object t) {
@@ -71,7 +72,8 @@ public class SmartArrayApp {
         MyComparator cmp = new MyComparator() {
             @Override
             public int compare(Object obj, Object secObj) {
-                return ((Student) obj).getSurname().compareTo(((Student) secObj).getSurname());
+                return ((Student) obj).getSurname().compareTo
+                        (((Student) secObj).getSurname());
             }
         };
 

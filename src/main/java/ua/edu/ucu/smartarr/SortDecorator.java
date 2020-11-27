@@ -2,7 +2,7 @@ package ua.edu.ucu.smartarr;
 
 import ua.edu.ucu.functions.MyComparator;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 
 // Sorts elements using MyComparator to compare them
